@@ -166,4 +166,4 @@ def create_new_user():
             {"username": username, "hashed_password": hashed_passwd, "name": name, "email": email})
     db.commit()
 
-    return render_template("success.html", link="/")
+    return render_template("success.html", message="User created successfully!", link="/")

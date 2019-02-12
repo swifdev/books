@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book details
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center text-center m-1 p-2">
+        <div class="col-xs">
+
+          <h1>Book details</h1>
+          <br>
+
+          <table class="table table-bordered table-primary table-hover">
+            <tbody>
+              <tr>
+                <th scope="row">Title</th>
+                <td>{{ book.title }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Author</th>
+                <td>{{ book.author }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Year</th>
+                <td>{{ book.year }}</td>
+              </tr>
+              <tr>
+                <th scope="row">ISBN</th>
+                <td>{{ book.isbn }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Number of Ratings</th>
+                <td>{{ number_of_ratings }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Rating</th>
+                <td>{{ average_rating }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% if user_review %}
+          <h4 class="text-left">Your Review</h4>
+          <ul class="text-left">
+              <li>
+                  Reviewed by: {{ user_review.name }}
+              </li>
+              <li>
+                  Username: {{ user_review.username }}
+              </li>
+              <li>
+                  Rating: {{ user_review.rating }}
+              </li>
+              <li>
+                {{ user_review.review }}
+              </li>
+          </ul>
+          {% else %}
+            <a href="{{ url_for('write_review', book_id=book.id ) }}">Leave a review for this book</a>
+            <br>
+          {% endif %}
+
+          {% if reviews %}
+          <h4 class="text-left">Users Reviews</h4>
+          {% endif %}
+
+          {% for review in reviews %}
+          <ul class="text-left">
+              <li>
+                  Reviewed by: {{ review.name }}
+              </li>
+              <li>
+                  Username: {{ review.username }}
+              </li>
+              <li>
+                  Rating: {{ review.rating }}
+              </li>
+              <li>
+                {{ review.review }}
+              </li>
+          </ul>
+          {% endfor %}
+
+          <a href="javascript:history.back()">Go Back</a>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Write a review
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center text-center m-1 p-2">
+      <div class="col-xs">
+
+          <h1>Write a review</h1>
+          <br>
+
+          <form action="{{ url_for('review', book_id=book.id ) }}" method="post">
+
+            <h3>{{ book.title }} by {{ book.author}}</h3>
+
+            <div class="form-group">
+              <h5>Review:</h5>
+              <textarea name="review_text" rows="5" cols="30" maxlength="254"></textarea>
+             </div>
+
+             <div class="form-group">
+              <h5>Rating:</h5>
+              <div class="d-flex justify-content-center">
+                <select class="form-control-sm w-auto content-center" name="review_rating">
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="form-group">
+                  <button class="btn btn-primary">Submit</button>
+              </div>
+              <a href="javascript:history.back()">Cancel</a>
+          </form>
+      </div>
+
+
+{% endblock %}

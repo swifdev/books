@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search a book
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center text-center m-1 p-2">
+      <div class="col-xs">
+
+          <h1>Search for a book</h1>
+          <br>
+
+          <form action="{{ url_for('results') }}" method="post">
+
+            <div class="form-group">
+                <h5>Search by:</h5>
+                <select class="form-control" name="search_by">
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                        <option value="isbn">ISBN</option>
+                </select>
+            </div>
+
+              <div class="form-group">
+                  <input class="form-control" name="search_text" placeholder="">
+              </div>
+
+              <div class="form-group">
+                  <button class="btn btn-primary">Search</button>
+              </div>
+          </form>
+      </div>
+
+
+{% endblock %}

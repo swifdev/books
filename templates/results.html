@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center text-center m-1 p-2">
+      <div class="col-xs">
+
+          <h1>Books found</h1>
+          <br>
+
+          <ul class="text-left">
+              {% for book in books %}
+                  <li>
+                      <a href="{{ url_for('book_details', book_id=book.id) }}">
+                          {{ book.title }} by {{ book.author }}, {{ book.year }}, ISBN: {{ book.isbn }}
+                      </a>
+                  </li>
+              {% endfor %}
+          </ul>
+
+
+          <a href="javascript:history.back()">Go Back</a>
+      </div>
+
+
+{% endblock %}
